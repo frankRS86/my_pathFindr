@@ -26,6 +26,7 @@ files, which contain the unit tests for the game. If you like to run continuous 
 1. clone the project to your local repository
 
 #host via node.js#
+
 This is the most interesting way if you want see the typescript compiler and continuous
 unit tests working live while changing something locally 
 
@@ -43,6 +44,6 @@ with this adress. If not please start manually and type in the url "localhost:42
 #deploy on any webserver#
 - might not work on every webserver without making further configs/settings.
 - copy the content of the "dist" folder to the root of your webserver. 
-  (inde.html must be there)
+  (index.html must be there)
 - access the host adress via any browser
 
