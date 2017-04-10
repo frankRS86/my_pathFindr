@@ -6,21 +6,19 @@ I used Angular because in my opinion, it's currenty one of the best SPA Framewor
 With the component based structure and the use of Typescript, it's possible to build very well structured object oriented
 applications. This makes it easy to work as a team on large scale applications, by separating the program in
 modules and subcomponents.
-It's possible to define own directives which can be used in the whole project (e.g. the Tile-Component here).
+It's possible to define own directives and services which can be used in the whole project (e.g. the Tile-Component here).
 
 One of the most popular features is the double-property-binding. In the pathfindr application some synchronisation
 work has to be done to update the view and process the user input. The property binding helps, keeping all data between view
 and model layer automatically up to date. You can see this effect in the views/board.component.ts and its corresponding html file which basically represents the playing-board.
 
 The framework also includes good support and integration of the reactive Rxjs framework for event driven structures.
-Keeping all parts of the application up to date is challenging and polling of data should be avoided because of traffic and performance reasons. Rxjs offers a perfect possibiliy via the observable pattern to inform all interested clients about certain events (in this case the scoreboard for example) 
+Keeping all parts of the application up to date is challenging and polling of data should be avoided because of traffic and performance reasons. Rxjs offers a perfect possibiliy via the observable pattern to inform all interested clients about certain events (in this case it's used for the scoreboard). This is a very powerful and fast mechanism for asynchronous programming
+and currently one of the most hyped topics in software development
 
 In regards of quality assurance the continous test integration by jasmine-framework and karma should be mentioned, which heavily support test driven development.
 These offer a way to unit test single services and components or event end to end tests. You can have a look at the .spec.ts
-files, which contain the unit tests for the game. If you like to run continuous testing on the project call npm test in the cloned repo 
-
-
-
+files, which contain the unit tests for the game. If you like to run continuous testing on the project call "npm test" in the cloned repo 
 
 
 ### install and run ###
