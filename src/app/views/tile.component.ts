@@ -8,7 +8,7 @@ export class TileModel
 
 @Component({
   selector: 'tile',
-  template: `<div class="singleTile" [style.background]="getColor()" (click)="tileClicked()">{{state}}</div>`,
+  template: `<div class="singleTile" [style.background]="getColor()" (click)="tileClicked()"></div>`,
   styles:[`
 
   .singleTile

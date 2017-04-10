@@ -31,8 +31,8 @@ var Scoreboard = (function () {
 Scoreboard = __decorate([
     core_1.Component({
         selector: 'score',
-        template: "\n    <h1>the best of the best<h1>\n    <ol>\n    <li *ngFor=\"let item of entries\">\n    {{item.getName()}}: {{item.getScoreString()}}\n    </li>\n    </ol>\n\n    ",
-        styles: ["\n        \n    "]
+        template: "\n    <h1>the best of the best<h1>\n    <div class=\"scorebox\">\n    <ol>\n    <li *ngFor=\"let item of entries\" [style.font-size.%]=\"'50'\">\n    {{item.getName()}}: {{item.getScoreString()}}\n    </li>\n    </ol>\n    </div>\n\n    ",
+        styles: ["\n        .scorebox\n        {\n            margin-left:5%;\n            width:90%;\n        }\n    "]
     }),
     __metadata("design:paramtypes", [highscore_service_1.HighscoreService])
 ], Scoreboard);

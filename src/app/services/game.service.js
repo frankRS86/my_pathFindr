@@ -45,6 +45,19 @@ var GameService = (function () {
         this.activeGame.rows = rows;
         return this.activeGame;
     };
+    GameService.prototype.resetAll = function () {
+        this.activeGame = new Game();
+        this.activeGame.rows = [];
+        return this.activeGame;
+    };
+    /**
+     * starts a round by
+     * - increasing the level
+     * - generate the game field
+     * - generate a random path on the board
+     * - show the path the user for an amount of time
+     * - hand control to the user
+     */
     GameService.prototype.startNextRound = function () {
         var _this = this;
         console.log("GameService#start a new game");
@@ -55,7 +68,6 @@ var GameService = (function () {
         this.activeGame.rows = board;
         this.path = this.factory.createNewPath(board);
         this.totalPathLength = this.path.length;
-        console.log("GameService#path-length = " + this.path.length);
         setTimeout(function () {
             console.log("GameService#fire timer. hide tiles");
             for (var i = 0; i < _this.path.length; i++) {

@@ -11,6 +11,7 @@ import {HighscoreService} from '../services/highscore.service';
     width:80%;
     height:100%;
     margin-left:15%;
+    margin-top:20pt;
     white-space: nowrap;
   }
 
@@ -18,6 +19,22 @@ import {HighscoreService} from '../services/highscore.service';
   display:inline-block;
   border-style:groove;
   height:100%;
+}
+
+.container
+{
+  overflow:hidden;
+}
+
+.left-box
+{
+  float:left
+}
+
+.left-box-2
+{
+  float:left;
+  padding-left:20pt;
 }
 
 .button {
@@ -28,6 +45,7 @@ import {HighscoreService} from '../services/highscore.service';
     border: solid 1px #8cc5d9;
     box-shadow: inset 0 0 0 1px #cdeffb;
     text-shadow: 0 1px 0 #b6e6f9; }  
+}
 
   `]
   ,
@@ -79,7 +97,8 @@ continueGame()
 save()
 {
     this.highscoreService.save(this.playerName,this.activeGame);
-    this.activeGame = new Game();
+    this.activeGame = this.gameService.resetAll();
+    this.rows = this.activeGame.rows;
 }
 
 }

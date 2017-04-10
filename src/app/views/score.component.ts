@@ -9,15 +9,21 @@ import {HighscoreService,Entry} from '../services/highscore.service';
     selector:'score',
     template:`
     <h1>the best of the best<h1>
+    <div class="scorebox">
     <ol>
-    <li *ngFor="let item of entries">
+    <li *ngFor="let item of entries" [style.font-size.%]="'50'">
     {{item.getName()}}: {{item.getScoreString()}}
     </li>
     </ol>
+    </div>
 
     `,
     styles:[`
-        
+        .scorebox
+        {
+            margin-left:5%;
+            width:90%;
+        }
     `]
 
 })

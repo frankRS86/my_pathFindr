@@ -62,6 +62,21 @@ startNewGame()
     return this.activeGame;
 }
 
+resetAll()
+{
+    this.activeGame = new Game();
+    this.activeGame.rows = [];
+    return this.activeGame;
+}
+
+/**
+ * starts a round by
+ * - increasing the level
+ * - generate the game field
+ * - generate a random path on the board
+ * - show the path the user for an amount of time
+ * - hand control to the user
+ */
 startNextRound():Row[]
 {
     console.log("GameService#start a new game");
@@ -74,8 +89,6 @@ startNextRound():Row[]
     this.activeGame.rows = board;
     this.path = this.factory.createNewPath(board);
     this.totalPathLength = this.path.length;
-
-    console.log("GameService#path-length = "+this.path.length);
 
     setTimeout(() =>{
     console.log("GameService#fire timer. hide tiles");

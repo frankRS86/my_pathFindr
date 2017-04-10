@@ -53,7 +53,7 @@ __decorate([
 Tile = __decorate([
     core_1.Component({
         selector: 'tile',
-        template: "<div class=\"singleTile\" [style.background]=\"getColor()\" (click)=\"tileClicked()\">{{state}}</div>",
+        template: "<div class=\"singleTile\" [style.background]=\"getColor()\" (click)=\"tileClicked()\"></div>",
         styles: ["\n\n  .singleTile\n  {\n      height:100%;\n  }\n  "]
     })
 ], Tile);

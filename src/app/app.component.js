@@ -14,7 +14,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'pathfindr-app',
-        template: "\n  <h1>Welcome to PathFindr</h1>\n  <a routerLink=\"/\">board</a>\n  <a routerLink=\"/scoreboard\">highscores</a>\n  <router-outlet></router-outlet>",
+        template: "\n  <h1>Welcome to PathFindr</h1>\n  <a routerLink=\"/\">board</a>\n  <a routerLink=\"/scoreboard\">highscores</a>\n  <router-outlet margin-top=\"20pt\"></router-outlet>",
         styles: [""]
     })
 ], AppComponent);
