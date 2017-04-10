@@ -1,0 +1,20 @@
+<div *ngIf="activeGame.state == 'init'"> challenge your memory and
+  <button (click)="startNewGame() " class="button">hit me to start!</button>
+  </div>
+
+   <div *ngIf="activeGame.state == 'rFinished'">Well done :) ready for next level? 
+   <button class="button" (click)="continueGame()">go on</button>
+   </div>
+  
+  <div *ngIf="activeGame.state == 'gameFinished'">OH NO that was wrong.<br>
+    You reached level: {{activeGame.level}} with {{activeGame.result}}% correct Tiles<br>
+    Save your highscrore for eternity: <input [(ngModel)]="playerName" placeholderText="your Name"/><button class="button" (click)="save()">save</button><br/>
+    or <button class="button" (click)="startNewGame()" >try again :) </button>
+  </div>
+  
+  <div *ngIf="activeGame.state == 'runningShow' || activeGame.state == 'runningUser'">Your on level {{activeGame.level}}</div>
+  <div class="box" *ngIf="activeGame.state == 'runningShow' || activeGame.state == 'runningUser'|| activeGame.state == 'gameFinished'">
+  <div [style.height.%]="tileSize" *ngFor="let row of rows">
+    <tile [state]="tile.state" [id]=tile.id class="cell" [style.width.%]="tileSize" (tileClick)="tileClicked($event)" *ngFor="let tile of row.tiles">
+    </tile>
+  </div>
