@@ -13,14 +13,6 @@ export const GAME_STATE =
    
 }
 
-export class GameResult
-{
-    finsihed:boolean; 
-    success:boolean;
-    levelReached:number;
-    tilesCorrect:number;
-}
-
 export class Game
 {
   state:string;
@@ -133,6 +125,11 @@ userAction(tile:Tile)
         this.activeGame.state = GAME_STATE.GAME_FINISHED;  
     }
 
+}
+
+getCurrentPath():TileModel[]
+{
+    return this.path;
 }
 
 

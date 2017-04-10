@@ -25,6 +25,9 @@ var Entry = (function () {
         return "level: " + this.result.level + ": " + this.result.result + "% of tiles";
     };
     Entry.prototype.equals = function (other) {
+        if (other == undefined) {
+            return -1;
+        }
         if (this.result.level < other.result.level) {
             return 1;
         }
@@ -52,11 +55,16 @@ var HighscoreService = (function () {
         return this.currentHighscore.asObservable();
     };
     HighscoreService.prototype.save = function (name, gameResult) {
+        if (name == undefined || name.length == 0 || gameResult == undefined || gameResult.level < 0 || gameResult.result < 0
+            || gameResult.result > 100) {
+            return false;
+        }
         console.log("HighscoreService#save highscore for player " + name);
         var entry = new Entry(name, gameResult);
         this.board.push(entry);
         this.board.sort(this.compare);
         this.currentHighscore.next(this.board);
+        return true;
     };
     HighscoreService.prototype.compare = function (a, b) {
         return a.equals(b);

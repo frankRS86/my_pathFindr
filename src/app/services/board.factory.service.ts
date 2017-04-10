@@ -12,8 +12,13 @@ export class BoardFactory
 {
 
 
-getBoard(size:number)
+getBoard(size:number):Row[]
 {
+if(size < 4)
+{
+    return undefined;
+}
+
  var rows:Row[] = [];
 
   console.log("creating new Field with size: "+size)
@@ -36,6 +41,11 @@ return rows;
 createNewPath(board:Row[]):TileModel[]
 {
  let path:TileModel[] = [];
+
+ if(board == undefined)
+ {
+    return path;
+ }
 
  var currentIndex:number = this.getRandomNumber(board.length-1);
  

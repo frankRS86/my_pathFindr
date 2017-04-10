@@ -17,12 +17,6 @@ exports.GAME_STATE = {
     ROUND_FINISHED: "rFinished",
     GAME_FINISHED: "gameFinished"
 };
-var GameResult = (function () {
-    function GameResult() {
-    }
-    return GameResult;
-}());
-exports.GameResult = GameResult;
 var Game = (function () {
     function Game() {
         this.level = 0;
@@ -97,6 +91,9 @@ var GameService = (function () {
             this.activeGame.result = Math.round((((this.totalPathLength - this.path.length) / this.totalPathLength) * 100));
             this.activeGame.state = exports.GAME_STATE.GAME_FINISHED;
         }
+    };
+    GameService.prototype.getCurrentPath = function () {
+        return this.path;
     };
     return GameService;
 }());

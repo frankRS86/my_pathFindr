@@ -1,53 +1,12 @@
 import { Component,OnInit } from '@angular/core';
-import {Tile} from '../views/tile.component';
-import {GameService,GameResult,Game} from '../services/game.service';
+import {Tile,TileModel} from '../views/tile.component';
+import {GameService,Game} from '../services/game.service';
 import {HighscoreService} from '../services/highscore.service';
 
 @Component({
   selector: 'board',
   templateUrl:'./board.component.html',
-  styles:[`
-  .box{
-    width:80%;
-    height:100%;
-    margin-left:15%;
-    margin-top:20pt;
-    white-space: nowrap;
-  }
-
-  .cell{
-  display:inline-block;
-  border-style:groove;
-  height:100%;
-}
-
-.container
-{
-  overflow:hidden;
-}
-
-.left-box
-{
-  float:left
-}
-
-.left-box-2
-{
-  float:left;
-  padding-left:20pt;
-}
-
-.button {
-    color: #559;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:100%;
-    background: #abe4f8;
-    border: solid 1px #8cc5d9;
-    box-shadow: inset 0 0 0 1px #cdeffb;
-    text-shadow: 0 1px 0 #b6e6f9; }  
-}
-
-  `]
+  styleUrls:['./board.component.css']
   ,
 })
 export class BoardComponent implements OnInit 
@@ -57,6 +16,8 @@ rows = new Array();
 tileSize:number;
 activeGame:Game;
 playerName:string;
+placeholder:string = "enter your name";
+solving:boolean;
 
 constructor(private gameService:GameService,private highscoreService:HighscoreService)
 {
@@ -76,7 +37,6 @@ ngOnInit()
 
 tileClicked(tile:Tile)
 {
-  console.log("tile clicked: "+tile);
   this.gameService.userAction(tile);
 }
 
@@ -96,9 +56,36 @@ continueGame()
 
 save()
 {
-    this.highscoreService.save(this.playerName,this.activeGame);
-    this.activeGame = this.gameService.resetAll();
-    this.rows = this.activeGame.rows;
+    if(this.highscoreService.save(this.playerName,this.activeGame))
+    {
+      this.activeGame = this.gameService.resetAll();
+      this.rows = this.activeGame.rows;
+      this.placeholder = "enter your name please"
+    }
+    else{
+      this.placeholder = "enter your name please!!!!!!!!!!!!!!!"
+    }
+}
+
+solve()
+{
+   this.solving = true;
+   let path:TileModel[] = this.gameService.getCurrentPath();
+
+    var interval = setInterval(() => {
+
+      if(path.length == 0)
+      {
+        this.solving = false; 
+        clearInterval(interval);
+        return;
+      }
+
+      let t = path[path.length-1];
+      this.gameService.userAction({id:t.id,state:0,tileClicked:undefined,getColor:undefined,tileClick:undefined});
+      
+    },1500);
+
 }
 
 }

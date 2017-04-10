@@ -17,6 +17,9 @@ var BoardFactory = (function () {
     function BoardFactory() {
     }
     BoardFactory.prototype.getBoard = function (size) {
+        if (size < 4) {
+            return undefined;
+        }
         var rows = [];
         console.log("creating new Field with size: " + size);
         for (var i = 0; i < size; i++) {
@@ -31,6 +34,9 @@ var BoardFactory = (function () {
     };
     BoardFactory.prototype.createNewPath = function (board) {
         var path = [];
+        if (board == undefined) {
+            return path;
+        }
         var currentIndex = this.getRandomNumber(board.length - 1);
         for (var i = 0; i < board.length; i++) {
             board[i].tiles[currentIndex].state = 1;

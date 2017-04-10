@@ -16,6 +16,7 @@ var BoardComponent = (function () {
         this.gameService = gameService;
         this.highscoreService = highscoreService;
         this.rows = new Array();
+        this.placeholder = "enter your name";
     }
     BoardComponent.prototype.ngOnInit = function () {
         this.activeGame = this.gameService.getActiveGame();
@@ -25,7 +26,6 @@ var BoardComponent = (function () {
         }
     };
     BoardComponent.prototype.tileClicked = function (tile) {
-        console.log("tile clicked: " + tile);
         this.gameService.userAction(tile);
     };
     BoardComponent.prototype.startNewGame = function () {
@@ -38,9 +38,28 @@ var BoardComponent = (function () {
         this.tileSize = 100 / (this.rows.length) - 5;
     };
     BoardComponent.prototype.save = function () {
-        this.highscoreService.save(this.playerName, this.activeGame);
-        this.activeGame = this.gameService.resetAll();
-        this.rows = this.activeGame.rows;
+        if (this.highscoreService.save(this.playerName, this.activeGame)) {
+            this.activeGame = this.gameService.resetAll();
+            this.rows = this.activeGame.rows;
+            this.placeholder = "enter your name please";
+        }
+        else {
+            this.placeholder = "enter your name please!!!!!!!!!!!!!!!";
+        }
+    };
+    BoardComponent.prototype.solve = function () {
+        var _this = this;
+        this.solving = true;
+        var path = this.gameService.getCurrentPath();
+        var interval = setInterval(function () {
+            if (path.length == 0) {
+                _this.solving = false;
+                clearInterval(interval);
+                return;
+            }
+            var t = path[path.length - 1];
+            _this.gameService.userAction({ id: t.id, state: 0, tileClicked: undefined, getColor: undefined, tileClick: undefined });
+        }, 1500);
     };
     return BoardComponent;
 }());
@@ -48,7 +67,7 @@ BoardComponent = __decorate([
     core_1.Component({
         selector: 'board',
         templateUrl: './board.component.html',
-        styles: ["\n  .box{\n    width:80%;\n    height:100%;\n    margin-left:15%;\n    margin-top:20pt;\n    white-space: nowrap;\n  }\n\n  .cell{\n  display:inline-block;\n  border-style:groove;\n  height:100%;\n}\n\n.container\n{\n  overflow:hidden;\n}\n\n.left-box\n{\n  float:left\n}\n\n.left-box-2\n{\n  float:left;\n  padding-left:20pt;\n}\n\n.button {\n    color: #559;\n    font-family: Arial, Helvetica, sans-serif;\n    font-size:100%;\n    background: #abe4f8;\n    border: solid 1px #8cc5d9;\n    box-shadow: inset 0 0 0 1px #cdeffb;\n    text-shadow: 0 1px 0 #b6e6f9; }  \n}\n\n  "],
+        styleUrls: ['./board.component.css'],
     }),
     __metadata("design:paramtypes", [game_service_1.GameService, highscore_service_1.HighscoreService])
 ], BoardComponent);
