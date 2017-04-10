@@ -17,7 +17,7 @@
   
   <div *ngIf="activeGame.state == 'gameFinished'"><p [style.color]="'red'">OH NO that was wrong.</p>
     You reached level: {{activeGame.level}} with {{activeGame.result}}% correct Tiles<br>
-    Save your highscrore for eternity: <input [(ngModel)]="playerName" placeholder="{{placeholder}}"/><button class="button" (click)="save()">save</button>
+    Save your highscrore for eternity: <input [(ngModel)]="playerName" placeholder="{{placeholder}}"/> <button class="button" (click)="save()">save</button>
      or <button class="button" (click)="startNewGame()" >try again :) </button><br/>
   </div>
   </div><!-- end of second left box-->
