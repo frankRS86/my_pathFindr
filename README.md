@@ -21,6 +21,8 @@ In regards of quality assurance the continous test integration by jasmine-framew
 These offer a way to unit test single services and components or create end-to-end tests. You can have a look at the .spec.ts
 files, which contain the unit tests for the game. If you like to run continuous testing on the project call "npm test" in the cloned repo 
 
+Due to the fact that mobile support was requested, Angular is also the framework of choice. The server side rendering and optimized code generation makes it very fast and efficient on mobile devices. It stays always fully responsive and never blocks.
+Btw: It can also be used to build native mobile and embedded applications.
 
 ### install and run ###
 
