@@ -35,7 +35,6 @@ unit tests working live while changing something locally
 - remember to add installation-path to your path variable
 - open a terminal and move to your local cloned repository
 - run "npm install" 
-- maybe you have to install cli separately ("npm install angular-cli")
 - when it's finished run "npm start" or "ng serve"
 -> this starts a websever on "localhost" and port 4200. (might be port 3000 if cli is not installed properly) It should also open your default browser
 with this adress. If not please start manually and type in the url "localhost:4200". (Replace localhost by the ip-adress if you want to access the game via a mobile device in the same network)
