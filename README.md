@@ -1,4 +1,4 @@
-This is the pathfindr browser game designed for Adidas.
+This is the pathfindr browser game.
 
 It's written with the Angular 2 framework and TypeScript as main language.
 
