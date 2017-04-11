@@ -11,13 +11,14 @@ It's possible to define own directives and services which can be used in the who
 One of the most popular features is the double-property-binding. In the pathfindr application some synchronisation
 work has to be done to update the view and process the user input. The property binding helps, keeping all data between view
 and model layer automatically up to date. You can see this effect in the views/board.component.ts and its corresponding html file which basically represents the playing-board.
+It large-scale applications this saves a lot of synchronisation effort and middleware code.
 
 The framework also includes good support and integration of the reactive Rxjs framework for event driven structures.
 Keeping all parts of the application up to date is challenging and polling of data should be avoided because of traffic and performance reasons. Rxjs offers a perfect possibiliy via the observable pattern to inform all interested clients about certain events (in this case it's used for the scoreboard). This is a very powerful and fast mechanism for asynchronous programming
-and currently one of the most hyped topics in software development
+and currently one of the most hyped topics in software development. It can be used for any async request, like classic http-request/responses
 
 In regards of quality assurance the continous test integration by jasmine-framework and karma should be mentioned, which heavily support test driven development.
-These offer a way to unit test single services and components or event end to end tests. You can have a look at the .spec.ts
+These offer a way to unit test single services and components or create end-to-end tests. You can have a look at the .spec.ts
 files, which contain the unit tests for the game. If you like to run continuous testing on the project call "npm test" in the cloned repo 
 
 
@@ -42,8 +43,10 @@ with this adress. If not please start manually and type in the url "localhost:42
 - if you are interested in the karma unit-tests and continuous-testing run "npm test"
 
 #deploy on any webserver#
-- might not work on every webserver without making further configs/settings.
+- might not work on every webserver without making further configs/settings!
+- I testet it with the OSX Build-In Apache Server and Node http-service
 - copy the content of the "dist" folder to the root of your webserver. 
   (index.html must be there)
-- access the host adress via any browser
+- access the host adress via any browser (e.g. localhost:yourPort)
+
 
