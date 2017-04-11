@@ -24,7 +24,8 @@ files, which contain the unit tests for the game. If you like to run continuous 
 
 ### install and run ###
 
-1. clone the project to your local repository
+1. clone the repository to your local machine
+git clone https://github.com/frankRS86/my_pathFindr
 
 #host via node.js#
 
