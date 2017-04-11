@@ -44,7 +44,7 @@ with this adress. If not please start manually and type in the url "localhost:42
 
 #deploy on any webserver#
 - might not work on every webserver without making further configs/settings!
-- I testet it with the OSX Build-In Apache Server and Node http-service
+- I testet it with the OSX Build-In Apache Server and Node http-server
 - copy the content of the "dist" folder to the root of your webserver. 
   (index.html must be there)
 - access the host adress via any browser (e.g. localhost:yourPort)
