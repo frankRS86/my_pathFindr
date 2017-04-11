@@ -18,7 +18,7 @@ Keeping all parts of the application up to date is challenging and polling of da
 and currently one of the most hyped topics in software development. It can be used for any async request, like classic http-request/responses
 
 In regards of quality assurance the continous test integration by jasmine-framework and karma should be mentioned, which heavily support test driven development.
-These offer a way to unit test single services and components or event end to end tests. You can have a look at the .spec.ts
+These offer a way to unit test single services and components or create end-to-end tests. You can have a look at the .spec.ts
 files, which contain the unit tests for the game. If you like to run continuous testing on the project call "npm test" in the cloned repo 
 
 
