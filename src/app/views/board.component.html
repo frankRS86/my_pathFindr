@@ -22,7 +22,8 @@
 
   <div [ngClass]="{'dialog':true,'active':activeGame.state == 'gameFinished' }">
    <p>OH NO that was wrong.</p>
-    You reached level: {{activeGame.level}} with {{activeGame.result}}% correct Tiles<br>
-    Save your highscrore for eternity: <input [(ngModel)]="playerName" placeholder="{{placeholder}}"/> <button class="button" (click)="save()">save</button>
-     or <button class="button" (click)="startNewGame()" >try again :) </button><br/>
+    <div>You reached level: {{activeGame.level}} with {{activeGame.result}}% correct Tiles</div>
+    <div>Save your highscrore for eternity: <input [(ngModel)]="playerName" placeholder="{{placeholder}}"/></div>
+    <button class="button" (click)="save()">save</button>
+    or <button class="button" (click)="startNewGame()" >try again :) </button><br/>
   </div>
