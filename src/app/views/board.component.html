@@ -1,27 +1,13 @@
    
-   <div class="container">
-   <div class="left-box">
-
-   <div *ngIf="activeGame.state == 'init'"> challenge your memory and
+  <div *ngIf="activeGame.state == 'init'" class="start">
   <button (click)="startNewGame() " class="button">hit me to start!</button>
   </div>
-  
-   <div *ngIf="activeGame.state != 'init'">Your on level {{activeGame.level}}</div>
-   </div> <!--left box end-->
-   
-   <div class="left-box-2">
 
-   <div *ngIf="activeGame.state == 'rFinished'">Well done :) ready for next level? 
-   <button class="button" (click)="continueGame()">go on with level {{activeGame.level+1}}</button>
+   <div class="level" *ngIf="activeGame.state != 'init'">Your on level {{activeGame.level}}</div>
+
+   <div *ngIf="activeGame.state == 'rFinished'" class="next">
+    <button class="button" (click)="continueGame()">wuhuu go on with level {{activeGame.level+1}}</button>
    </div>
-  
-  <div *ngIf="activeGame.state == 'gameFinished'"><p [style.color]="'red'">OH NO that was wrong.</p>
-    You reached level: {{activeGame.level}} with {{activeGame.result}}% correct Tiles<br>
-    Save your highscrore for eternity: <input [(ngModel)]="playerName" placeholder="{{placeholder}}"/> <button class="button" (click)="save()">save</button>
-     or <button class="button" (click)="startNewGame()" >try again :) </button><br/>
-  </div>
-  </div><!-- end of second left box-->
-  </div> <!--end of container-->
   
   <div class="box" *ngIf="activeGame.state == 'runningShow' || activeGame.state == 'runningUser'|| activeGame.state == 'gameFinished'">
   <div [style.height.%]="tileSize" *ngFor="let row of rows">
@@ -29,4 +15,14 @@
     </tile>
   </div>
   <div [style.margin-top.pt]="'15'" *ngIf="activeGame.state == 'runningUser'">uhhh thats too hard. <button [disabled]="solving" class="button" (click)="solve()">Win the game for me</button></div>
+  </div>
+
+
+  <div [ngClass]="{'overlay':true,'active':activeGame.state == 'gameFinished' }"></div>
+
+  <div [ngClass]="{'dialog':true,'active':activeGame.state == 'gameFinished' }">
+   <p>OH NO that was wrong.</p>
+    You reached level: {{activeGame.level}} with {{activeGame.result}}% correct Tiles<br>
+    Save your highscrore for eternity: <input [(ngModel)]="playerName" placeholder="{{placeholder}}"/> <button class="button" (click)="save()">save</button>
+     or <button class="button" (click)="startNewGame()" >try again :) </button><br/>
   </div>

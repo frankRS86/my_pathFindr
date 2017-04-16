@@ -8,13 +8,32 @@ export class TileModel
 
 @Component({
   selector: 'tile',
-  template: `<div class="singleTile" [style.background]="getColor()" (click)="tileClicked()"></div>`,
+  template: `<div [ngClass]="['singleTile' , getColor()]" (click)="tileClicked()"></div>`,
   styles:[`
 
   .singleTile
   {
       height:100%;
+      transition:background-color 1s;
   }
+
+  .grey
+  {
+      background-color:grey;
+  }
+    .red
+  {
+      background-color:red;
+  }
+    .green
+  {
+      background-color:green;    
+  }
+    .orange
+  {
+      background-color:orange;
+  }
+
   `]
 })
 export class Tile
